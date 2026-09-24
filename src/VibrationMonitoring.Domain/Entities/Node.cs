@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-using System.Diagnostics.Metrics;
-using VibrationMonitoring.Domain.Enums;
+﻿using VibrationMonitoring.Domain.Enums;
 
 namespace VibrationMonitoring.Domain.Entities;
 
@@ -46,13 +44,6 @@ public class Node : BaseEntity
     /// <summary>Порядок отображения среди соседей одного родителя.</summary>
     public int SortOrder { get; private set; }
 
-    /// <summary>
-    /// Код связанного актива во внешней системе (AssetTracker).
-    /// Для узлов типа <see cref="NodeType.Component"/> с <c>Kind = Motor</c>
-    /// содержит <c>Motor.Code</c>. <c>null</c> для узлов, не связанных с внешней системой.
-    /// </summary>
-    public string? ExternalAssetCode { get; private set; }
-
     // --- Специфичные сущности (1:1, опционально в зависимости от Type) ---
 
     /// <summary>Данные оборудования. Заполнено только для <see cref="NodeType.Equipment"/>.</summary>
@@ -72,12 +63,11 @@ public class Node : BaseEntity
     /// <summary>Измерения, привязанные к узлу (обычно к точке измерения).</summary>
     public ICollection<Measurement> Measurements { get; private set; } = new List<Measurement>();
 
-
     /// <summary>Конструктор для EF Core.</summary>
     private Node() { }
 
     /// <summary>Создаёт новый узел дерева.</summary>
-    public Node(string code, string name, NodeType type, string? externalAssetCode = null)
+    public Node(string code, string name, NodeType type)
     {
         if (string.IsNullOrWhiteSpace(code))
             throw new ArgumentException("Code обязателен.", nameof(code));
@@ -87,7 +77,6 @@ public class Node : BaseEntity
         Code = code;
         Name = name;
         Type = type;
-        ExternalAssetCode = externalAssetCode;
     }
 
     /// <summary>Устанавливает materialized path и глубину. Вызывается сервисом дерева.</summary>
@@ -115,9 +104,6 @@ public class Node : BaseEntity
 
     /// <summary>Устанавливает порядок отображения среди соседей.</summary>
     public void SetSortOrder(int order) => SortOrder = order;
-
-    /// <summary>Связывает узел с внешним активом (например, с Motor.Code).</summary>
-    public void SetExternalAssetCode(string? code) => ExternalAssetCode = code;
 
     /// <summary>Помечает узел как удалённый. Для всего поддерева использовать сервис дерева.</summary>
     public void MarkDeleted() => IsDeleted = true;
