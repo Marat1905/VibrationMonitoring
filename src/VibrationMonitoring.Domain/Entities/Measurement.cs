@@ -44,7 +44,4 @@ public class Measurement : BaseEntity
 
     /// <summary>FK на элемент выполнения маршрута, если измерение сделано в рамках обхода.</summary>
     public Guid? ExecutionItemId { get; set; }
-
-    /// <summary>Навигационное свойство на элемент выполнения маршрута.</summary>
-    public ExecutionItem? ExecutionItem { get; set; }
 }

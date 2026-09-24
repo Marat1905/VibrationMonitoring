@@ -72,8 +72,6 @@ public class Node : BaseEntity
     /// <summary>Измерения, привязанные к узлу (обычно к точке измерения).</summary>
     public ICollection<Measurement> Measurements { get; private set; } = new List<Measurement>();
 
-    /// <summary>Настройки пороговых значений для узла. Могут быть <c>null</c> — тогда наследуются от родителя.</summary>
-    public AlertSettings? AlertSettings { get; private set; }
 
     /// <summary>Конструктор для EF Core.</summary>
     private Node() { }
