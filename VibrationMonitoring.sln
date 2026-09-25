@@ -1,11 +1,32 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.37111.16 d17.14
+VisualStudioVersion = 17.14.37111.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{36D591C7-65C7-A0D1-1CBC-10CDE441BDC8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VibrationMonitoring.Domain", "src\VibrationMonitoring.Domain\VibrationMonitoring.Domain.csproj", "{A5824D88-F404-4AD3-968F-CCEDFE9AE34C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "k8s", "k8s", "{59AEFC93-60EF-46D8-AC6C-7064E9C123AE}"
+	ProjectSection(SolutionItems) = preProject
+		k8s\test.yaml = k8s\test.yaml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{910AADA2-622E-4F62-ADCE-6D889F5AF4AA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "web", "web", "{A3368D6A-4152-4E73-A31D-4C93DE8B3552}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VibrationMonitoring.Application", "src\VibrationMonitoring.Application\VibrationMonitoring.Application.csproj", "{81BFE870-D87E-4509-8752-1F998D662745}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VibrationMonitoring.Infrastructure", "src\VibrationMonitoring.Infrastructure\VibrationMonitoring.Infrastructure.csproj", "{321F52F5-1104-4459-B1F1-0BE9B750AA5B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VibrationMonitoring.WebAPI", "src\VibrationMonitoring.WebAPI\VibrationMonitoring.WebAPI.csproj", "{457EC207-5D99-4056-8D59-A80DD85315FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VibrationMonitoring.IntegrationTests", "tests\VibrationMonitoring.IntegrationTests\VibrationMonitoring.IntegrationTests.csproj", "{0D7B22EC-0CF3-4A95-A186-6EE2CE22EC4C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VibrationMonitoring.UnitTests", "tests\VibrationMonitoring.UnitTests\VibrationMonitoring.UnitTests.csproj", "{2FA0B7B7-1BB8-4E5C-985A-6736464131A9}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "client", "web\client\client.esproj", "{485E3DE1-D647-BD96-1022-EA1E7CDE81E7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,12 +38,44 @@ Global
 		{A5824D88-F404-4AD3-968F-CCEDFE9AE34C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5824D88-F404-4AD3-968F-CCEDFE9AE34C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A5824D88-F404-4AD3-968F-CCEDFE9AE34C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81BFE870-D87E-4509-8752-1F998D662745}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81BFE870-D87E-4509-8752-1F998D662745}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81BFE870-D87E-4509-8752-1F998D662745}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81BFE870-D87E-4509-8752-1F998D662745}.Release|Any CPU.Build.0 = Release|Any CPU
+		{321F52F5-1104-4459-B1F1-0BE9B750AA5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{321F52F5-1104-4459-B1F1-0BE9B750AA5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{321F52F5-1104-4459-B1F1-0BE9B750AA5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{321F52F5-1104-4459-B1F1-0BE9B750AA5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{457EC207-5D99-4056-8D59-A80DD85315FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{457EC207-5D99-4056-8D59-A80DD85315FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{457EC207-5D99-4056-8D59-A80DD85315FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{457EC207-5D99-4056-8D59-A80DD85315FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D7B22EC-0CF3-4A95-A186-6EE2CE22EC4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D7B22EC-0CF3-4A95-A186-6EE2CE22EC4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D7B22EC-0CF3-4A95-A186-6EE2CE22EC4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D7B22EC-0CF3-4A95-A186-6EE2CE22EC4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FA0B7B7-1BB8-4E5C-985A-6736464131A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FA0B7B7-1BB8-4E5C-985A-6736464131A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FA0B7B7-1BB8-4E5C-985A-6736464131A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FA0B7B7-1BB8-4E5C-985A-6736464131A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{485E3DE1-D647-BD96-1022-EA1E7CDE81E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{485E3DE1-D647-BD96-1022-EA1E7CDE81E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{485E3DE1-D647-BD96-1022-EA1E7CDE81E7}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{485E3DE1-D647-BD96-1022-EA1E7CDE81E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{485E3DE1-D647-BD96-1022-EA1E7CDE81E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{485E3DE1-D647-BD96-1022-EA1E7CDE81E7}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{A5824D88-F404-4AD3-968F-CCEDFE9AE34C} = {36D591C7-65C7-A0D1-1CBC-10CDE441BDC8}
+		{81BFE870-D87E-4509-8752-1F998D662745} = {36D591C7-65C7-A0D1-1CBC-10CDE441BDC8}
+		{321F52F5-1104-4459-B1F1-0BE9B750AA5B} = {36D591C7-65C7-A0D1-1CBC-10CDE441BDC8}
+		{457EC207-5D99-4056-8D59-A80DD85315FE} = {36D591C7-65C7-A0D1-1CBC-10CDE441BDC8}
+		{0D7B22EC-0CF3-4A95-A186-6EE2CE22EC4C} = {910AADA2-622E-4F62-ADCE-6D889F5AF4AA}
+		{2FA0B7B7-1BB8-4E5C-985A-6736464131A9} = {910AADA2-622E-4F62-ADCE-6D889F5AF4AA}
+		{485E3DE1-D647-BD96-1022-EA1E7CDE81E7} = {A3368D6A-4152-4E73-A31D-4C93DE8B3552}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1ACDD0A6-009B-4299-A697-947D63319BDF}
